@@ -222,3 +222,23 @@ class EthiopianDateConverter(object):
         ethiopian_month = order[m]
 
         return datetime.date(ethiopian_year, ethiopian_month, ethiopian_date)
+
+    @classmethod
+    def to_ethiopian_date(cls, date: datetime.datetime):
+        """ Ethiopian date string representation of provided Gregorian date from datetime object
+
+        Params:
+        * date: datetime object (ethiopian date)
+        return: datetime.datetime, converted ethiopian date
+        """
+        return datetime.datetime(*cls.to_ethiopian(date.year, date.month, date.day))
+
+    @classmethod
+    def to_gregorian_date(cls, date: datetime.datetime):
+        """ Gregorian date string representation of provided Ethiopian date from datetime object
+
+        Params:
+        * date: datetime object (gregorian date)
+        return: datetime.datetime, converted gregorian date
+        """
+        return datetime.datetime(*cls.to_gregorian(date.year, date.month, date.day))
